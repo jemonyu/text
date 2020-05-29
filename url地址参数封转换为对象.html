@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>url转换对象</title>
+</head>
+<body>
+    <script>
+        let url = "http://www.xxx.net/x/x.html?id=898602B8261890349226&username=老张&age=39";
+        
+        function urlParams(url){
+            if(url.length == 0){
+                return false;
+            }
+
+            // 把url地址用？分割，取参数部分
+            var arr1 = url.split("?")[1];
+            console.log(arr1);
+
+            //&分割，拿到key=val这种结构
+            var arr2 = arr1.split("&");
+            console.log(arr2);
+
+            //循环数组，封装对象
+            var object = new Object();
+            //for of循环取出数组中的值
+            for(let item of arr2){
+                console.log(item);
+                let tmp = item.split("=");
+                object[tmp[0]] = tmp[1];
+            }
+            return object;
+        }
+
+        let res = urlParams(url);
+        console.log(res);
+    </script>
+</body>
+</html>
